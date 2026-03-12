@@ -1,1 +1,1 @@
-# XU_LY_ANH
+# BÀI TẬP LỚN XỬ LÝ ẢNH
