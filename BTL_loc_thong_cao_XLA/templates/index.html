@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lọc thông cao</title>
+
+<style>
+
+body{
+    background:#f5f7fa;
+    font-family:Arial;
+    text-align:center;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+}
+
+h1{
+    color:#333;
+}
+
+select,input{
+    padding:10px;
+    margin:10px;
+    border-radius:5px;
+}
+
+button{
+    padding:10px 20px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.image-row{
+    display:flex;
+    justify-content:space-around;
+    margin-top:30px;
+}
+
+.image-box{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px #ccc;
+}
+
+img{
+    width:300px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>SO SÁNH LỌC THÔNG CAO</h1>
+
+<form action="/process" method="post">
+
+<select name="image">
+{% for img in images %}
+<option value="{{img}}">{{img}}</option>
+{% endfor %}
+</select>
+
+<button type="submit">Xử lý</button>
+
+</form>
+
+{% if original %}
+<div class="image-row">
+
+<div class="image-box">
+<h3>Ảnh gốc</h3>
+<img src="{{ url_for('static', filename=original) }}">
+</div>
+
+<div class="image-box">
+<h3>Lọc không gian</h3>
+<img src="{{ url_for('static', filename=spatial) }}">
+</div>
+
+<div class="image-box">
+<h3>Lọc tần số</h3>
+<img src="{{ url_for('static', filename=freq) }}">
+</div>
+
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
